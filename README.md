@@ -1,2 +1,2 @@
-# C-Algoritma-rnekleri-T-rk-e
+# C-Algoritma-Ornekleri-Turkce
 Başlangıç ve Orta Seviyeli Algoritmalar içerir
