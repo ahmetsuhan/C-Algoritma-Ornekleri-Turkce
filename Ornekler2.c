@@ -5,6 +5,10 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include <ctype.h>
+#include <locale.h>
+
+#define _CRT_SECURE_NO_WARNING
 
 #pragma region Ornek75
 	/* ANAHTAR SÖZCÜK MÜ?
@@ -47,12 +51,207 @@ void sublong(const char* num1, const char* num2, char* num3);
 int is_sorted(const int* ptr, int size);
 #pragma endregion
 
+#pragma region Ornek80
+/* GEÇERLÝ BÝR ÝSÝM MÝ? */
+/* Kendisine gönderilen bir yazý içindeki degisken isminin C'de geçerli bir degiþken ismi olup
+	olmadýðýný sýnayan is_legal isimli iþlevi yazýn. Ýþlev, aldýðý isim geçerli bir deðiþken ismi
+	ise sýfýr dýþý bir deðere, geçerli bir deðiþken ismi deðilse 0 deðerine geri dönmeli.
+	int is_legal(const char *str);*/
+int is_legal(const char *str);
+#pragma endregion
+
+#pragma region Ornek81
+/* HECELERÝ YAZDIRAN ÝÞLEV */
+/* Türkçe'nin heceleme kurallarýna uygun olarak, verilen bir sözcüðü hece hece ekrana
+	yazdýracak, aþaðýda bildirimi verilen hece_yaz isimli iþlevi tanýmlayýn:
+	int hece_yaz(const char *str)
+	hece_yaz iþlevi baþlangýç adresini aldýðý yazýyý hece hece ekrana yazar. Hecelerin
+	arasýnda yalnýzca tek bir boþluk karakteri bulunmalý.
+	hece_yaz iþlevinin geri dönüþ deðeri ekrana yazýlan hece sayýsýdýr.*/
+char* hece_yaz(const char* str);
+#pragma endregion
+
+//tekrar bak
+#pragma region Ornek82
+/* ROMEN RAKAMLARIYLA ÝLGÝLÝ ÝÞLEVLER */
+/* Romen rakamlarýyla ilgili iþlem yapacak aþaðýdaki iþlevleri tanýmlayýn.
+	int rom_to_int(const char *str);
+	Ýþlev, kendisine gönderilen dizgedeki romen rakamlarýyla ifade edilmiþ int türden sayý
+	sýnýrlarý içinde kalan tamsayýyý, int türden bir tamsayýya çevirerek geri dönüþ deðeri
+	olarak üretmeli.
+	Eðer adresi alýnan yazý romen rakamlarýyla ifade edilebilen bir tamsayýyý göstermiyorsa,
+	iþlev -1 deðerine geri dönmeli.
+	Yazý boþluk karakterleriyle baþlayabilir. Bu durumda boþluk karakterleri dikkate
+	alýnmayacaktýr. Romen rakamlarý ile yazýlan sayýnýn, sonlandýrýcý karakter görüldüðünde
+	ya da romen rakamlarý karakterleri dýþýnda ilk karakterin görülmesi durumunda sonlandýðý
+	düþünülmeli. char *int_to_rom (int number, char *str);
+	Ýþleve kendisine birinci argüman olarak gönderilen int türden bir tamsayýyý, romen
+	rakamlarýyla ifade ederek, ikinci argüman olarak kendisine gönderilen adresten
+	baþlayarak yazmalý. Birinci argüman romen rakamlarýyla ifade edilemeyecek deðer ise iþlev NULL adresine
+	geri dönmeli. Aksi halde iþlev kendisine gönderilen adrese geri dönmeli.
+	void display_rom (unsigned int number);
+	Ýþlev kendisine argüman olarak gönderilen sayýyý romen rakamlarýyla ekrana yazmalý.
+	int isvalid_rom(const char *str);
+	str içindeki yazýnýn romen rakamlarýyla yazýlmýþ geçerli bir sayý olup olmadýðýný sýnar.
+	Geçerli bir tamsayý ise iþlev sýfýr dýþý bir deðere, geçerli deðil ise 0 deðerine geri döner.
+	I 1
+	V 5
+	X 10
+	L 50
+	C 100
+	D 500
+	M 1000*/
+#pragma endregion
+
+#pragma region Ornek83
+	/* strlen ÝÞLEVÝ */
+	/* strlen, string.h baþlýk dosyasý içinde bildirilen standart bir C iþlevidir.
+		size_t strlen(const char *string);
+		strlen iþlevi baþlangýç adresini aldýðý yazýnýn uzunluðu ile geri döner. Ýþlevi mystrlen
+		ismiyle tanýmlayarak*/
+size_t mystrlen(const char* string);
+#pragma endregion
+
+#pragma region Ornek84
+/* strchr ÝÞLEVÝ */
+/* char *strchr(const char *string, int c);
+Ýþlevin birinci parametresi gönderilen yazýnýn baþlangýç adresi, ikinci parametresi bir
+karakterin kod numarasýdýr. Ýþlev yazý içinde c karakterini arar. Ýþlev ilk bulduðu c
+karakterinin adresiyle geri döner. Eðer yazý içinde c karakteri yoksa iþlev NULL adresi ile
+geri döner.*/
+
+char* mystrchr(const char* string, int c);
+#pragma endregion
+
+
+#pragma region Ornek85
+/* strrchr ÝÞLEVÝ */
+/* char *strrchr(const char *string, int c );
+	Ýþlevin birinci parametresi gönderilen yazýnýn baþlangýç adresi, ikinci parametresi bir
+	karakterin kod numarasýdýr. Ýþlev yazýnýn sonundan baþlayarak, yazý içinde c karakterini
+	arar. Ýþlev ilk bulduðu c karakterinin adresiyle geri döner. Eðer yazý içinde c karakteri
+	yoksa, iþlev NULL adresi ile geri döner.*/
+char* mystrrchr(const char* string, int c);
+#pragma endregion
+
+#pragma region Ornek86
+/* strcpy ÝÞLEVÝ */
+/* char *strcpy(char *dest, const char *source);
+Ýþlev, baþlangýç adresi source olan yazýyý dest adresine kopyalar. Ýþlevin geri dönüþ
+deðeri dest adresidir. */
+char* mystrcpy(char* dest, const char* source);
+#pragma endregion
+
+
+#pragma region Ornek87
+/* strcat ÝÞLEVÝ */
+/* char *strcat(char *dest, const char *source);
+	Ýþlev, baþlangýç adresi source olan yazýnýn sonuna dest adresindeki yazýyý ekler. Ýþlevin
+	geri dönüþ deðeri dest adresidir.*/
+char* mystrcat(char* dest, const char* source);
+#pragma endregion
+
+#pragma region Ornek88
+/* strcmp ÝÞLEVÝ */
+/* int strcmp(const char *s1, const char *s2);
+	Ýþlev s1 ve s2 adreslerindeki yazýlarý karþýlaþtýrýr. Eðer s1 adresindeki yazý s2 adresindeki
+	yazýdan daha büyükse, iþlev pozitif bir deðere, s1 adresindeki yazý s2 adresindeki yazýdan
+	daha küçükse 0’dan küçük bir deðere, yazýlar eþit ise 0 deðerine geri döner. Bu iþlevi
+	mystrcmp ismiyle tanýmlayýn.*/
+int mystrcmp(const char* s1, const char* s2);
+#pragma endregion
+
+#pragma region Ornek89
+/* stricmp ÝÞLEVÝ */
+/* stricmp iþlevi, standart olmamasýna karþýn pekçok C derleyicisinde bulunur. Bu iþlev iki
+	yazýyý büyük harf küçük harf ayrýmý yapmadan karþýlaþtýrýr. Bu iþlevi mystricmp ismiyle
+	tanýmlayýn.
+	int mystricmp(const char *s1, const char *s2);
+	Ýþlev birinci yazý ikinci yazýdan büyükse pozitif herhangi bir deðere, küçükse negatif
+	herhangi bir deðere ve iki yazý birbirine eþitse sýfýr deðerine geri dönmeli.*/
+int mystricmp(const char* s1, const char* s2);
+#pragma endregion
+
+#pragma region Ornek90
+/* strcmp ÝÞLEVÝ (Türkçe) */
+/* Ýki yazýyý Türkçe karakterleri dikkate alarak büyük harf küçük harf duyarlýlýðý ile ile
+	karþýlaþtýran strcmptrk isimli iþlevi tasarlayýn:
+	int strcmptrk(const char *s1, const char *s2);
+	Ýþlev birinci yazý ikinci yazýdan büyükse pozitif herhangi bir deðere, küçükse negatif
+	herhangi bir deðere, eþitse sýfýra geri dönmeli.*/
+int strcmptrk(const char* s1, const char* s2);
+#pragma endregion
+
+#pragma region Ornek91
+/* strstr ÝÞLEVÝ */
+/* strstr, bildirimi string.h baþlýk dosyasý içinde bulunan standart bir C iþlevidir.
+	char *strstr(const char *s1, const char *s2);
+	Ýþlev baþlangýç adresi s1 olan yazý içinde baþlangýç adresi s2 olan yazýyý arar. Eðer
+	aranýlan yazý bulunursa, iþlevin geri dönüþ deðeri bulunan yerin adresidir. Eðer yazý
+	bulunmazsa iþlev NULL adresine geri döner.*/
+char* mystrstr(const char* s1, const char* s2);
+#pragma endregion
+
+#pragma region Ornek92
+/* strncpy ÝÞLEVÝ */
+/* char *strncpy(char *dest, const char *source, size_t n);
+	Ýþlev source adresindeki yazýnýn ilk n karakterini dest adresine kopyalar. Eðer n deðeri
+	source adresindeki yazýnýn uzunluðuna eþit ya da yazýnýn uzunluðundan küçük ise,
+	kopyalama yapýlan yazýnýn sonuna sonlandýrýcý karakter eklenmez. n deðeri source
+	adresindeki yazýnýn uzunluðundan daha büyükse, kopyalama yapýlan yazýnýn sonuna
+	source adresindeki yazýnýn kopyalanmasýndan sonra, sonlandýrýcý karakterler eklenmeli.
+	Ýþlev dest adresine geri dönmeli.
+	Bu iþlevi mystrncpy ismiyle tanýmlayýn.*/
+char* mystrncpy(char* dest, const char* source, size_t n);
+#pragma endregion
+
+
+#pragma region Ornek93
+/* strncat ÝÞLEVÝ */
+/* strncat, bildirimi string.h baþlýk dosyasý içinde bulunan standart bir C iþlevidir.
+	char *strncat(char *dest, const char *source, size_t n);
+	Ýþlev dest adresindeki yazýnýn sonuna source adresindeki yazýnýn ilk n karakterini ekler.
+	source adresindeki yazýnýn ilk karakteri dest adresindeki yazýnýn sonundaki sonlandýrýcý
+	karakterin üzerine yazýlýr. Eðer n deðerine ulaþýlmadan source adresindeki yazýda
+	sonlandýrýcý karakter ile karþýlaþýlýrsa, dest adresindeki yazýnýn sonuna, yalnýzca
+	sonlandýrýcý karaktere kadar olan karakterler eklenir. dest adresindeki yazýnýn sonuna her
+	zaman sonlandýrýcý karakter eklenir. Ýþlevin geri dönüþ deðeri dest adresidir.
+	Bu iþlevi mystrncat ismiyle tanýmlayýn.*/
+char* mystrncat(char* dest, const char* source, size_t n);
+#pragma endregion
+
+#pragma region Ornek94
+/* strrev ÝÞLEVÝ */
+/* strrev iþlevi standart bir C iþlevi olmamasýna karþýn pekçok C derleyicisinde bulunur:
+	char *mystrrev(char *str);
+	Bu iþlev baþlangýç adresini aldýðý yazýyý ters çevirir. Bu iþlevi mystrrev ismiyle tanýmlayýn. */
+char* mystrrev(char* str);
+#pragma endregion
+
+#pragma region Ornek95
+/* strset ÝÞLEVÝ */
+/* strset iþlevi standart bir C iþlevi olmamasýna karþýn hemen hemen tüm C derleyicilerinde
+	bulunur. Bu iþlev baþlangýç adresini aldýðý yazýnýn tüm karakterlerini ikinci parametresine
+	sýra numarasýný aldýðý karaktere dönüþtürür. Ýþlevin geri dönüþ deðeri aldýðý yazýnýn
+	baþlangýç adresidir.
+	*/
+char* mystrset(char* str,char ch);
+#pragma endregion
+
+#pragma region Ornek96
+/* squeze ÝÞLEVÝ */
+/* char *squeze(char *s1, const char *s2);
+	squeze iþlevi s1 adresindeki yazý içindeki karakterlerden biri, s2 adresi içinde bulunan
+	yazý içinde var ise bu karakteri yazýdan silmeli. Baþka bir deyiþle s1 adresindeki yazý
+	içinde s2 adresindeki yazýdaki karakterlerden hiçbirini içermeyecek hale getirilmeli.
+	Ýþlevin s1 adresine geri dönmeli.*/
+char* squeze(char* s1, const char* s2);
+#pragma endregion
+
 
 int main()
 {
-
-
-
+	
 
 
 }
@@ -483,5 +682,295 @@ void sublong(const char* num1, const char* num2, char* num3)
 
 int is_sorted(const int* ptr, int size)
 {
+	int temp = 0;
+	for (int i = 0; i < size-1; i++)
+	{
+		if (*(ptr + i) <= *(ptr + i + 1))
+		{
+			temp = 0;
+		}
+		else {
+			temp = 1;
+			break;
+		}
+	}
+	if (temp == 1)
+		return 0;
+
+	return 1;
+}
+
+int is_legal(const char * str)
+{
+	int legal = 1; //zero is not legal
+	for (int i = 0; *(str + i) != '\0'; i++)
+	{
+		if (*(str + i) == 'Ý' || *(str + i) == 'ý' || *(str + i) == 'ç' || *(str + i) == 'Ç' || *(str + i) == 'ö' || *(str + i) == 'Ö' || *(str + i) == 'þ' || *(str + i) == 'Þ' || *(str + i) == 'Ü' || *(str+i) == 'ü' || *(str+i) == 'ð' || *(str+i) == 'Ð') {
+			legal = 0;
+			break;
+		}
+	}
+	if (legal == 0)
+		return 0;
+	else
+		return 1; 
+}
+
+//tekrar bak 
+char* hece_yaz(const char* str)
+{
+	char* token1 = NULL;
+	char* nextToken = NULL;
+	char seps[] = "a,e,i,o,u,A,E,I,U,O";
+	token1 = strtok_s(str,seps,&nextToken);
+	return token1;
+}
+
+size_t mystrlen(const char* string)
+{
+	size_t length = 0;
+	for (int i = 0; *(string + i) != '\0'; i++)
+	{
+		length++;
+	}
+	return length;
+}
+
+char* mystrchr(const char* string, int c)
+{
+	int i = 0;
+	for (; *(string + i) != '\0'; i++)
+	{
+		if (*(string + i) == c)
+		{
+			return string + i;
+		}
+	}
+	return NULL;
+	
+}
+
+char* mystrrchr(const char* string, int c)
+{
+	int length = 0;
+	for (int i = 0; *(string + i) != '\0'; i++)
+		length++;
+	for (int i = length - 1; i >= 0; i--)
+	{
+		if (*(string + i) == c)
+		{
+			return string + i;
+		}
+	}
+	return NULL;
+}
+
+char* mystrcpy(char* dest, const char* source)
+{
+	for (int i = 0; *(source + i) != '\0'; i++)
+	{
+		*(dest + i) = *(source + i);
+	}
+	return dest;
+}
+
+/*
+char* mystrcat(char* dest, const char* source)
+{
+	
+}
+*/
+
+int mystrcmp(const char* s1, const char* s2)
+{
+	int equal = 0; 
+	for (int i = 0; *(s1 + i) != '\0'; i++)
+	{
+		if (*(s1 + i) > * (s2 + i)) {
+			equal = 1;
+			break;
+		}
+		else if (*(s1 + i) < *(s2 + i)) {
+			equal = -1;
+			break;
+		}
+		equal = 0;
+	}
+	return equal;
+}
+
+int mystricmp(const char* s1, const char* s2)
+{
+	int equal = 0; 
+	for (int i = 0; *(s1 + i) != '\0'; i++)
+	{
+		if (toupper(*(s1 + i)) > toupper(*(s2 + i)))
+		{
+			equal = 1;
+			break;
+		}
+		else if (toupper(*(s1 + i)) < toupper(*(s2 + i)))
+		{
+			equal = -1;
+			break;
+		}
+		else if (toupper(*(s1 + i)) == toupper(*(s2 + i)))
+		{
+			equal = 0;
+		}
+	}
+	return equal;
+}
+
+int strcmptrk(const char* s1, const char* s2)
+{
+	setlocale(LC_ALL, "Turkish");
+	int equal = 0;
+	for (int i = 0; *(s1 + i) != '\0'; i++)
+	{
+		if (*(s1 + i) > * (s2 + i)) {
+			equal = 1;
+			break;
+		}
+		else if (*(s1 + i) < *(s2 + i)) {
+			equal = -1;
+			break;
+		}
+		equal = 0;
+	}
+	return equal;
 
 }
+
+char* mystrstr(const char* s1, const char* s2)
+{
+	return (strstr(s1, s2));
+}
+
+char* mystrncpy(char* dest, const char* source, size_t n)
+{
+	int sourceLength = 0;
+	for (int i = 0; *(source + i) != '\0'; i++)
+	{
+		sourceLength++;
+	}
+	if (n <= sourceLength)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			*(dest + i) = *(source + i);
+		}
+	}
+	else
+	{
+		for (int i = 0; i < n; i++)
+		{
+			*(dest + i) = *(source + i);
+		}
+		*(dest + n) = '\0';
+	}
+	return dest;
+}
+
+char* mystrncat(char* dest, const char* source, size_t n)
+{
+	int sourceLength = 0;
+	for (int i = 0; *(source + i) != '\0'; i++)
+	{
+		sourceLength++;
+	}
+	int i = 0;
+	for ( ; i<n ; i++)
+	{
+		*(dest + sourceLength + i) = *(source + i);
+	}
+	*(dest + sourceLength + i + 1 ) = '\0';
+	return dest;
+}
+
+char* mystrrev(char* str)
+{
+	char* begin_ptr, * end_ptr, ch;
+	int length = 0;
+	int i = 0;
+	// Get the length of the string 
+	for (; *(str + i) != '\0'; i++) {
+		length++;
+	}
+	// Set the begin_ptr and end_ptr 
+	// initially to start of string 
+	begin_ptr = str;
+	// Move the end_ptr to the last character
+	end_ptr = str+length-1;
+
+	// Swap the char from start and end 
+	// index using begin_ptr and end_ptr 
+	for (i = 0; i < length / 2; i++) {
+
+		// swap character 
+		ch = *end_ptr;
+		*end_ptr = *begin_ptr;
+		*begin_ptr = ch;
+
+		// update pointers positions 
+		begin_ptr++;
+		end_ptr--;
+	}
+	return str;
+}
+
+char* mystrset(char* str,char ch)
+{
+	int length = 0;
+	for (int i = 0; *(str + i) != '\0'; i++)
+		length++;
+	for (int i = 0; i < length; i++)
+	{
+		*str = ch;
+		str++;
+	}
+	return str;
+}
+
+char* squeze(char* s1, const char* s2)
+{
+	int lenghtS1 = 0, lenghtS2 = 0,isContais=0;//isContain = 0 no match
+	char* copiedStr = s1;
+	int index = 0;
+	for (int i = 0; *(s2 + i) != '\0'; i++)
+		lenghtS2++;
+	for (int i = 0; *(s1 + i) != '\0'; i++)
+		lenghtS1++;
+
+	for (int k = 0; k < lenghtS1; k++)
+	{
+		isContais = 0;
+		for (int c = 0; c < lenghtS2; c++)
+		{
+			if (toupper(*(s1)) == toupper(*(s2+c) ))
+			{
+				isContais = 1;
+				break;
+			}
+		}
+		if (isContais==0)
+		{
+			*(copiedStr + index) = *s1;
+			index++;
+		}
+		s1++;
+	}
+	char* a = malloc(index+1);
+	char b;
+	*(a + index) = '\0';
+	for (int m = 0; m < index; m++)
+	{
+		b = *(copiedStr + m);
+		*(a+m) = b;
+	}
+	s1 = a;
+	return s1;
+}
+
+
+
