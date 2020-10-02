@@ -2,12 +2,23 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-
+#include <math.h>
+#include <ctype.h>
 #define _CRT_SECURE_NO_WARNINGS
 
-int main()
-{
+int main(){
 
+
+
+
+
+
+
+
+
+	
+	
+	
 
 	
 }
@@ -2923,6 +2934,7 @@ Bir C programý yazarak, yukarýdaki koþullarýn hepsini saðlayan tüm abc sayýlarýn
 	}
 #pragma endregion
 
+
 	//yapamadým bir daha bak.
 #pragma region Ornek50
 	/* TÜRKÇE KARAKTERÝ DÖNÜÞTÜREN ÝÞLEV */
@@ -3086,6 +3098,385 @@ Bir C programý yazarak, yukarýdaki koþullarýn hepsini saðlayan tüm abc sayýlarýn
 		kok1 = -3.250000
 		kok2 = 2.000000*/
 #pragma endregion
+
+#pragma region Ornek56
+		/*draw circle */
+	int radius = 16;
+
+	for (int i = 0; i <= 2 * radius; i++)
+	{
+		for (int j = 0; j <= 2 * radius; j++)
+		{
+			double distance = sqrt((double)(i - radius) * (i - radius) + (j - radius) * (j - radius));
+			if (distance > radius - 0.5 && distance < radius + 0.5)
+			{
+				printf("*");
+			}
+			else
+			{
+				printf(" ");
+			}
+		}
+		printf("\n");
+	}
+#pragma endregion
+
+#pragma region Ornek57
+	/* Bir sayiyi ikilik sistemde yazdirma*/
+	/*
+	* Kendisine gönderilen int türden bir tamsayýyý ekrana ikilik sayý sisteminde yazdýracak
+	  void print_binary(int val);
+	*/
+	int number57, remainder57 = 0, swap57 = 0, indexCounter57 = 0, remainders57[100];
+	printf("Enter any number:");
+	scanf_s("%d", &number57);
+	swap57 = number57;
+	while (swap57 > 0) {
+		remainder57 = swap57 % 2;
+		remainders57[indexCounter57] = remainder57;
+		swap57 = swap57 / 2;
+		indexCounter57++;
+	}
+	for (int i = indexCounter57 - 1; i >= 0; i--) {
+		printf("%d", remainders57[i]);
+	}
+#pragma endregion
+
+#pragma region Ornek58
+	/* TAMSAYIYI TERS ÇEVÝREN ÝÞLEV */
+	/*	Kendisine gönderilen int türden bir deðerin tersiyle (basamaklarýnýn ters çevrilmiþ
+		biçimiyle) geri dönen reverse_val isimli iþlevi tanýmlayýn. Ýþlevin bildirimi
+		int reverse_val(int value);
+		biçimindedir.
+		reverse_val iþlevi parametre deðiþkenine kopyalanan deðerin basamaklarý ters çevrilerek
+		elde edilen deðere geri dönmeli.
+	*/
+	int number58, swap58 = 0, returnNumber58 = 0;
+	int unitDigits58 = 0, tenth58 = 0, hundreads58 = 0, thousands58 = 0, tenThousands58 = 0, hundreadThousands58 = 0, billions58 = 0;
+	int counter58 = 0;
+	printf("Enter any integer:");
+	scanf_s("%d", &number58);
+	swap58 = number58;
+	while (swap58 > 0) {
+		unitDigits58 = swap58 % 10;
+		billions58 = swap58 / 1000000;
+		swap58 = swap58 - (billions58 * 1000000) - unitDigits58;
+		hundreadThousands58 = swap58 / 100000;
+		swap58 = swap58 - (hundreadThousands58 * 100000);
+		tenThousands58 = swap58 / 10000;
+		swap58 = swap58 - (tenThousands58 * 10000);
+		thousands58 = swap58 / 1000;
+		swap58 = swap58 - (thousands58 * 1000);
+		hundreads58 = swap58 / 100;
+		swap58 = swap58 - (hundreads58 * 100);
+		tenth58 = swap58 / 10;
+		swap58 = swap58 - (tenth58 * 10);
+	}
+	swap58 = number58;
+	while (swap58 > 0) {
+		swap58 /= 10;
+		counter58++;
+	}
+	for (int i = 0; i < counter58 - 1; i++)
+		unitDigits58 *= 10;
+	for (int i = 0; i < counter58 - 2; i++) {
+		if (counter58 - 2 <= 0)
+			break;
+		tenth58 *= 10;
+	}
+	for (int i = 0; i < counter58 - 3; i++) {
+		if (counter58 - 3 <= 0)
+			break;
+		hundreads58 *= 10;
+	}
+	for (int i = 0; i < counter58 - 4; i++) {
+		if (counter58 - 4 <= 0)
+			break;
+		thousands58 *= 10;
+	}
+	for (int i = 0; i < counter58 - 5; i++) {
+		if (counter58 - 5 <= 0)
+			break;
+		tenThousands58 *= 10;
+	}
+	for (int i = 0; i < counter58 - 6; i++) {
+		if (counter58 - 5 <= 0)
+			break;
+		hundreadThousands58 *= 10;
+	}
+	for (int i = 0; i < counter58 - 7; i++) {
+		if (counter58 - 7 <= 0)
+			break;
+		billions58 *= 10;
+	}
+	returnNumber58 = billions58 + hundreadThousands58 + tenThousands58 + thousands58 + hundreads58 + tenth58 + unitDigits58;
+	printf("%d -> %d", number58, returnNumber58);
+#pragma endregion
+
+#pragma region Ornek59
+	/* KLAVYEDEN GÝRÝLEN SAYILARIN ORTALAMASINI BULMAK  */
+	/*
+		Klavyeden girilen tamsayý deðerlerin, toplam sayýsýný, en büyüðünü, en küçüðünü, ve
+		ortalamasýný hesaplayan deger.c isimli bir C programý yazýn. Kullanýcýnýn her deger
+		giriþinden önce, yeni bir deðer girmek isteyip istemediði sorulmalý:
+		Yeni bir deger girmek istiyor musunuz? [E] [H]
+		Kullanýcý 'e' ya da 'e' tuþuna basarsa, program kullanýcýnýn bir deðer girmesini istemeli.
+		Bir tamsayý giriniz: 53 enter
+		Kullanýcý 'h' ya da 'H' tuþuna basarsa, program o ana kadar girilen deðerlerle ilgili olarak
+		aþaðýdaki dökümü olarak vererek sonlanmalý:
+		Toplam 17 deger girildi.
+		Max = 89
+		Min = 17
+		Ortalama = 37.456786
+		program sonlandý!
+		Kullanýcýnýn 'E', 'e', 'H' ya da 'h' tuþlarý dýþýnda baþka bir tuþa basmasý durumunda
+		program bir tepki vermemeli.
+		1. Programda dizi kullanýlmayacak.
+		2. Girilen deðerler [0 - 100] aralýðýnda olmalý. Geçersiz bir deðer girilmesi sýrasýnda
+		ekrana
+		"geçersiz deðer "
+		uyarýsý yazýlarak yeni bir giriþ yapýlmasý istenmeli.
+		"yeni bir deger giriniz"
+	*/
+	int number59, max59, min59, counter59 = 0;
+	float average59 = 0;
+
+	while (1) {
+		printf("\nYeni bir deðer girmek istiyor musunuz?[E,H]");
+		char cevap59 = getchar();
+		if (toupper(cevap59) == 'H') {
+			printf("max:%d min:%d ortalama:%.4f counter:%d", max59, min59, average59 / counter59, counter59);
+			break;
+		}
+		else if (toupper(cevap59) == 'E') {
+			printf("Girmek istediginiz deger:");
+			scanf_s("%d", &number59);
+			getchar();
+			counter59++;
+			if (counter59 == 1) {
+				max59 = number59;
+				min59 = number59;
+				average59 = number59;
+			}
+			else {
+				if (number59 > max59) {
+					max59 = number59;
+				}if (number59 < min59) {
+					min59 = number59;
+				}
+				average59 = (average59 + number59);
+			}
+		}
+		else
+			printf("Geçersiz iþlem....\n");
+	}
+#pragma endregion
+
+#pragma region Ornek60
+	/* DÝZÝNÝN EN BÜYÜK ELEMANINI BULMAK */
+	srand(time(0));
+	int array60[100];
+	int max60 = 0;
+	for (int i = 0; i < 100; i++) {
+		array60[i] = rand() % 500;
+		if (i && i % 20 == 0)
+			printf("\n");
+		printf("%3d ", array60[i]);
+	}
+	printf("\n");
+	max60 = array60[0];
+	for (int i = 1; i < 100; i++) {
+		if (array60[i] > max60) {
+			max60 = array60[i];
+		}
+	}
+	printf("En buyuk eleman:%d", max60);
+#pragma endregion
+
+#pragma region Ornek61
+	/* DÝZÝNÝN EN BÜYÜK ÝKÝNCÝ ELEMANINI BULMAK */
+	srand(time(0));
+	int array61[100];
+	int max61_3[100];
+	int max61, max61_2 = 0, counter61 = 0, temp61 = 0, maxNumberIndex61 = 0;
+	for (int i = 0; i < 100; i++) {
+		array61[i] = rand() % 500;
+		if (i && i % 20 == 0)
+			printf("\n");
+		printf("%3d ", array61[i]);
+	}
+	printf("\n");
+	max61 = array61[0];
+	for (int i = 0; i < 100; i++) {
+		if (array61[i] > max61) {
+			max61 = array61[i];
+			max61_3[counter61] = max61;
+			counter61++;
+		}
+	}
+	printf("\n");
+	for (int i = 0; i < counter61; i++) {
+		printf("%d	", max61_3[i]);
+	}
+	printf("\n");
+	printf("second max number of array is %d ", max61_3[counter61 - 2]);
+#pragma endregion
+
+#pragma region Ornek62
+	/* DÝZÝNÝN STANDART SAPMASINI BULMAK */
+	/* Standart sapma ortalamadan sapmanýn bir ölçüsüdür. Standart sapmayý aþaðýdaki formül
+		ile hesaplayabilirsiniz :
+		ort = dizinin aritmetik ortalamasý
+		n = dizinin eleman sayýsý
+		a[i] = dizinin her bir elemaný
+		farkkare[i] = (ai - ort) * (ai - ort)
+		standart sapma = karekok (kumulatif(farkkare[i]) / n)
+		Yukarýdaki formülde ort dizinin aritmetik ortalamasýný, n ise dizinin eleman sayýsýný
+		gösteriyor. “Bir dizinin standart sapmasý dizi elemanlarýnýn ortalamadan farklarýnýn
+		kareleri kümülatif toplamýnýnýn dizinin eleman sayýsýna bölümünün kareköküne eþittir.”
+
+		int a[SIZE] = {1, 2, 6, 5, 4, 3, 7, 2,-2, 3, 4, 12,31, -12, 15, 6, 0, 8, 19, 2};
+		standart sapma = 8.482924
+		*/
+	int array62[20] = { 1, 2, 6, 5, 4, 3, 7, 2,-2, 3, 4, 12,31, -12, 15, 6, 0, 8, 19, 2 };
+	int average62 = 0, sum62 = 0;
+	int farkKare[20];
+	float standartSapma62 = 0;
+	for (int i = 0; i < 20; i++) {
+		sum62 += array62[i];
+	}
+	average62 = sum62 / 20;
+	sum62 = 0;
+	for (int i = 0; i < 20; i++) {
+		farkKare[i] = (array62[i] - average62) * (array62[i] - average62);
+	}
+	for (int i = 0; i < 20; i++) {
+		sum62 += abs(farkKare[i]);
+	}
+	standartSapma62 = sqrt(sum62 / 20);
+	printf("%f", standartSapma62);
+#pragma endregion
+
+#pragma region Ornek63
+	/* DÝZÝNÝN TEK VE ÇÝFT ELEMANLARINI AYRI AYRI SIRALAMAK */
+	int array63[10] = { 3, 8, 12, 30, 56, 35, 78, 31, 69, 40 };
+	int evenCounter63 = 0, oddCounter63 = 0, temp63 = 0;
+	int evens63[10];
+	int odds63[10];
+
+	for (int i = 0; i < 10; i++) {
+		if (array63[i] % 2 == 0) {
+			evens63[evenCounter63] = array63[i];
+			evenCounter63++;
+		}
+		else {
+			odds63[oddCounter63] = array63[i];
+			oddCounter63++;
+		}
+	}
+	/*buble sort for odds */
+	for (int i = 0; i < oddCounter63; i++) {
+		for (int j = 0; j < oddCounter63 - i - 1; j++) {
+			if (odds63[j] > odds63[j + 1])
+			{
+				temp63 = odds63[j];
+				odds63[j] = odds63[j + 1];
+				odds63[j + 1] = temp63;
+			}
+		}
+	}
+	/*buble sort for evens */
+	for (int i = 0; i < evenCounter63; i++) {
+		for (int j = 0; j < evenCounter63 - i - 1; j++) {
+			if (evens63[j] > evens63[j + 1]) {
+				temp63 = evens63[j];
+				evens63[j] = evens63[j + 1];
+				evens63[j + 1] = temp63;
+			}
+		}
+	}
+	for (int i = 0; i < oddCounter63; i++) {
+		printf("%d\n", odds63[i]);
+	}
+	for (int i = 0; i < evenCounter63; i++) {
+		printf("%d\n", evens63[i]);
+	}
+#pragma endregion
+
+#pragma region Ornek64
+	/* DÝZÝNÝN TEK VE ÇÝFT ELEMANLARININ AYRI AYRI
+		ORTALAMALARINI BULMAK */
+	int array64[10] = { 3, 8, 12, 30, 56, 35, 78, 31, 69, 40 };
+	int evenCounter64 = 0, oddCounter64 = 0;
+	float evenAverage64 = 0, oddAverage64 = 0;
+	int evens64[10], odds64[10];
+	int sum64 = 0;
+	for (int i = 0; i < 10; i++) {
+		if (array64[i] % 2 == 0) {
+			evens64[evenCounter64] = array64[i];
+			evenCounter64++;
+		}
+		else {
+			odds64[oddCounter64] = array64[i];
+			oddCounter64++;
+		}
+	}
+	if (evenCounter64 > 0) {
+		for (int i = 0; i < evenCounter64; i++) {
+			sum64 += evens64[i];
+		}
+		evenAverage64 = sum64 / evenCounter64 + 1;
+		printf("Average of even:%f\n", evenAverage64);
+	}
+	else {
+		printf("There is no even number.\n");
+	}
+	sum64 = 0;
+	if (oddCounter64 > 0) {
+		for (int i = 0; i < oddCounter64; i++) {
+			sum64 += odds64[i];
+		}
+		oddAverage64 = sum64 / oddCounter64;
+		printf("Average of odd:%f\n", oddAverage64);
+	}
+	else {
+		printf("There is no odd number.\n");
+	}
+#pragma endregion
+
+#pragma region Ornek65
+
+	/* SAYISAL LOTO KUPONU BASAN PROGRAM */
+	/* Rastgele deðerlerle 8 kolon sayýsal loto oyunu oynayan bir C programý yazýn:
+		* bir kolonda [1 - 49] aralýðýnda 6 sayý bulunmalý.
+		* bir kolonda ayný sayý iki kez bulunmamalý.
+		* iki kolon birbirinin ayný olabilir.
+		* kolonlar ekrana sýralý yazdýrýlmalý.
+Örnek bir program çýktýsý :
+KOLON 1 3 12 34 37 41 43
+KOLON 2 14 19 20 30 40 45
+KOLON 3 2 4 8 20 26 40
+KOLON 4 12 17 19 25 28 34
+KOLON 5 1 5 20 24 29 49
+KOLON 6 12 23 28 30 34 37
+KOLON 7 4 11 12 18 31 42
+KOLON 8 9 18 27 29 38 44*/
+	srand(time(0));
+	int randomNumber65 = 0;
+	int counter65 = 0;
+	while (counter65 < 8) {
+		printf("Kolon %d ", counter65 + 1);
+		for (int j = 0; j < 6; j++) {
+			randomNumber65 = rand() % 50;
+			printf("%d ", randomNumber65);
+		}
+		printf("\n");
+		counter65++;
+	}
+#pragma endregion
+
+
+
 
 }
 
